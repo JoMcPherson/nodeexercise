@@ -16,7 +16,7 @@
             data.forEach((element) => {
               tbody.insertRow().innerHTML = `<td>${element.dept}</td>
                <td>${element.courseNum}</td>
-               <td>${element.courseName}</td>`;
+               <td><a href="http://localhost:8081/api/courses/${element.id}">${element.courseName}</a></td>`;
             });
           })
           .catch((err) => console.error(err));
