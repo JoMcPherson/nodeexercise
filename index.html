@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+  </head>
+  <body>
+    <h1>index</h1>
+    <script>
+      window.onload = function () {
+        fetch("http://localhost:8081/api/courses")
+          .then((response) => response.json())
+          .then((data) => {
+            let tbody = document.getElementById("courses");
+            data.forEach((element) => {
+              tbody.insertRow().innerHTML = `<td>${element.dept}</td>
+               <td>${element.courseNum}</td>
+               <td>${element.courseName}</td>`;
+            });
+          })
+          .catch((err) => console.error(err));
+      };
+    </script>
+    <table>
+      <thead>
+        <tr>
+          <th>Department</th>
+          <th>Course Number</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody id="courses"></tbody>
+    </table>
+  </body>
+</html>
